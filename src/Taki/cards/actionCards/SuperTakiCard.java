@@ -21,7 +21,7 @@ public class SuperTakiCard extends SpecialCard {
 		ChangeColorCard.playChangeColor(game, currentPlayer);
 		
 		// Play taki
-		TakiCard.playTaki(game, currentPlayer);
+		TakiCard.playTaki(game, currentPlayer, this);
 	}
 	
 	@Override

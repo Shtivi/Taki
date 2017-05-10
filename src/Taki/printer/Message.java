@@ -62,6 +62,8 @@ public class Message {
 		// Ctor
 		public MessageCreator(String text) {
 			this.text = text;
+			this.color = Color.DEFAULT;
+			this.newLine = true;
 		}
 		
 		// Setters

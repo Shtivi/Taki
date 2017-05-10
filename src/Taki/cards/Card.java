@@ -34,7 +34,10 @@ public abstract class Card {
 	}
 	
 	public void print() {
-		//AnsiConsole.out.print(Ansi.ansi().fg(this.getColor().getAnsi()).a(" [".concat(this.toString()).concat("] ")).reset());
-		Globals.colorPrint(this.getColor().getAnsi(), String.format("%s", this.toString()));
+		Globals.colorPrint(this.getColor().getAnsi(), this.toString());
+	}
+	
+	public void print(CardColor differentColor) {
+		Globals.colorPrint(differentColor.getAnsi(), this.toString());
 	}
 }

@@ -85,7 +85,7 @@ public class Player {
 			int realIndex = cardIndex + 1;
 			int indexLength = String.valueOf(realIndex).length();
 			int leftPadding = cardOutput.length() / 2 - indexLength / 2;
-			int rightPadding = leftPadding;
+			int rightPadding = leftPadding + indexLength - 1;
 			
 			if (cardOutput.length() % 2 == 0) {
 				leftPadding--;

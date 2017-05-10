@@ -34,7 +34,6 @@ public class TwoPlusCard extends Card implements ActionCard {
 			// If the player does not has any plus 2 cards
 			if (plusTwoIndex == -1) {
 				int cardsToDraw = thrownCardsCounter * 2;
-				
 				Printer.instance().enqueue(new Message.MessageCreator(nextPlayer.getNickname() + " gets " + cardsToDraw + " cards").build());
 				
 				// Add the cards to the player's hand
