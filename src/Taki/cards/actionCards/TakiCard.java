@@ -28,25 +28,30 @@ public class TakiCard extends Card implements ActionCard {
 			} else if (!game.validatePlayerAction(currentPlayer.getCard(cardInput - 1))) {
 				System.out.println("Illegal move.");
 			} else {
-				// Throw card
-				Card thrownCard = currentPlayer.throwCard(cardInput - 1);
+				CardColor previousColor = game.getTopColor();
 				
-				// Check if the thrown card color is different from the deck top color.
-				// If so, it means the players has to stop his taki
-				if (!Game.instance().getTopColor().equals(thrownCard.getColor())) {
-					forcedStop = true;
-				}				
+				// Throw card
+				Card thrownCard = currentPlayer.throwCard(cardInput - 1);			
 				
 				// Add the thrown card to the used cards list
 				game.addThrownCard(thrownCard);
 				
 				// Reprint the player's hand
 				currentPlayer.printHand();
+					
+				// Check if the thrown card color is different from the deck top color.
+				// If so, it means the players has to stop his taki
+				if (!previousColor.equals(thrownCard.getColor())) {
+					forcedStop = true;
+				}					
 			}
 			
-			// Read next card input
-			System.out.println("Drop anotehr card, or enter -1 to stop ==> ");
-			cardInput = Globals.reader.nextInt();
+			// If the player changed the top color and has been forced to stop his taki
+			if (!forcedStop) {
+				// Read next card input
+				System.out.println("Drop anotehr card, or enter -1 to stop ==> ");
+				cardInput = Globals.reader.nextInt();
+			}
 		}
 		
 		// Check if last thrown card is an action card, and if so, activate it

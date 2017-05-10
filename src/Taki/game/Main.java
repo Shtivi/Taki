@@ -60,6 +60,10 @@ public class Main {
 				// Print previous messages
 				Printer.instance().print();
 				System.out.println();
+	
+				System.out.printf("%-30s     |     The card on top is: ", playingNow.getNickname().concat(" is playing now"));
+				Game.instance().cardOnTop().print(Game.instance().getTopColor());
+				System.out.println();				
 				
 				// Perform the current player turn,
 				// then check if he won the game

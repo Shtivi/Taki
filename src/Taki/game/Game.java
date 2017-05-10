@@ -169,9 +169,6 @@ public class Game {
 	}
 	
 	public boolean doTurn(Player player) {
-		System.out.printf("%-30s     |     The card on top is: ", player.getNickname().concat(" is playing now"));
-		this.cardOnTop().print(this.getTopColor());
-		System.out.println();
 		player.printHand();
 		
 		// Ask the player what he wants to do

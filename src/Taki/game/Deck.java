@@ -10,6 +10,7 @@ import Taki.cards.Card;
 import Taki.cards.CardColor;
 import Taki.cards.NumericCard;
 import Taki.cards.actionCards.ChangeColorCard;
+import Taki.cards.actionCards.PlusCard;
 import Taki.cards.actionCards.StopCard;
 import Taki.cards.actionCards.SuperTakiCard;
 import Taki.cards.actionCards.SwitchDirectionCard;
@@ -45,6 +46,7 @@ public class Deck {
 				this.cards.add(new StopCard(currentColor));
 				this.cards.add(new SwitchDirectionCard(currentColor));
 				this.cards.add(new TakiCard(currentColor));
+				this.cards.add(new PlusCard(currentColor));
 			}
 		}
 		
