@@ -49,6 +49,9 @@ public class Main {
 		try {					
 			Player winner = null;
 			
+			// Find the first player
+			Player playingNow = Game.instance().getNextPlayer();
+			
 			// Run as long as we dont have a winner
 			while (winner == null) {
 				// Clear the console
@@ -58,12 +61,20 @@ public class Main {
 				Printer.instance().print();
 				System.out.println();
 				
-				// Get the next player and do his turn,
-				// and check if the player has won the game
-				Player playingNow = Game.instance().getNextPlayer();
-				
+				// Perform the current player turn,
+				// then check if he won the game
 				if (Game.instance().doTurn(playingNow)) {
 					winner = playingNow;
+				} else {
+					// Pass the turn
+					playingNow = Game.instance().getNextPlayer();
+					
+					// Wait for the next player to get his turn
+					Globals.clearConsole();
+					System.out.println("Pass the turn to " + playingNow.getNickname());
+					System.out.println("Hit ENTER when ready.");
+					Globals.reader.nextLine();
+					Globals.reader.nextLine();
 				}
 			}
 			
