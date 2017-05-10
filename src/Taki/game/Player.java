@@ -76,8 +76,32 @@ public class Player {
 	
 	public void printHand() {
 		for (int cardIndex = 0; cardIndex < this.getHand().size(); cardIndex++) {
-			System.out.print((cardIndex + 1) + ":");	
 			this.getHand().get(cardIndex).print();
+		}
+		System.out.println();
+		
+		for (int cardIndex = 0; cardIndex < this.getHand().size(); cardIndex++) {
+			String cardOutput = this.getHand().get(cardIndex).toString();
+			int realIndex = cardIndex + 1;
+			int indexLength = String.valueOf(realIndex).length();
+			int leftPadding = cardOutput.length() / 2 - indexLength / 2;
+			int rightPadding = leftPadding;
+			
+			if (cardOutput.length() % 2 == 0) {
+				leftPadding--;
+			}
+			
+			for (int i = 0; i < leftPadding; i++) {
+				System.out.print(" ");
+			}
+			
+			System.out.print(realIndex);
+			
+			for (int i = 0; i < rightPadding; i++) {
+				System.out.print(" ");
+			}
+			
+			System.out.flush();
 		}
 		
 		System.out.print("\n");

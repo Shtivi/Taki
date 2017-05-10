@@ -5,6 +5,7 @@ import org.fusesource.jansi.Ansi.Color;
 import org.fusesource.jansi.AnsiConsole;
 
 import Taki.game.Globals;
+import Taki.printer.Printer;
 
 public abstract class Card {
 	// Data members
@@ -29,10 +30,11 @@ public abstract class Card {
 	
 	@Override
 	public String toString() {
-		return (this.name());
+		return (" [" + this.name() + "] ");
 	}
 	
 	public void print() {
-		AnsiConsole.out.print(Ansi.ansi().fg(this.getColor().getAnsi()).a(" [".concat(this.toString()).concat("] ")).reset());
+		//AnsiConsole.out.print(Ansi.ansi().fg(this.getColor().getAnsi()).a(" [".concat(this.toString()).concat("] ")).reset());
+		Globals.colorPrint(this.getColor().getAnsi(), String.format("%s", this.toString()));
 	}
 }
