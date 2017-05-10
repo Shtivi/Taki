@@ -17,6 +17,8 @@ public class Globals {
 	public static final int		CARD_COPIES_FOR_COLOR = 2;
 	public static final int		COLOR_CHANGERS_NUM = 4;
 	public static final int		SUPER_TAKIS_NUM = 2;
+	public static final	int		MIN_PLAYERS_AMOUNT = 2;
+	public static final String	FINISH_PLAYERS_REGISTERATION = "GO";
 	
 	// Methods
 	

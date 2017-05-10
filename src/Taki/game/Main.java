@@ -19,19 +19,25 @@ public class Main {
 		System.out.printf ("       Welcome!       \n");
 		System.out.println("----------------------");
 		System.out.println("To start the game, enter players' nicknames.");
+		System.out.println("There must be at least " + Globals.MIN_PLAYERS_AMOUNT + " players in order to start.");
 		System.out.println("When you done, enter GO");
 		
 		// Read first player nickname
 		System.out.print("==> ");
 		System.out.flush();
-		String playerNickname = Globals.reader.nextLine();
+		String playerNickname = Globals.reader.nextLine().trim();
 		
 		// Register players
-		while (!playerNickname.trim().toUpperCase().equals("GO") || Game.instance().countPlayers() == 0) {
-			try {
-				Game.instance().registerPlayer(playerNickname);
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
+		while (Game.instance().countPlayers() < 2 || !playerNickname.equalsIgnoreCase(Globals.FINISH_PLAYERS_REGISTERATION)) {
+			// If trying to register the the word FINISH_PLAYERS_REGISTERATION
+			if (playerNickname.equalsIgnoreCase(Globals.FINISH_PLAYERS_REGISTERATION)) {
+				System.out.println("You can't use the word " + Globals.FINISH_PLAYERS_REGISTERATION + " as a nickname");
+			} else {
+				try {
+					Game.instance().registerPlayer(playerNickname);
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
 			}
 			
 			// Read next player name
